@@ -1,0 +1,142 @@
+@use '../abstracts/variables' as va;
+@use '../abstracts/mediaQuery' as mq;
+
+.c-login-welcome {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../../../public/images/p-login-bg.jpg');
+  background-size: cover;
+
+  &__container {
+    width: 70rem;
+    // height: 80%;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.6);
+    display: flex;
+    overflow: hidden;
+    background-color: #fff;
+    margin: 3rem 1rem;
+    min-width: 300px;
+
+    @include mq.tablet {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    @include mq.mobileM {
+      margin: 3rem 0.5rem;
+    }
+  }
+
+  &__info {
+    flex: 1;
+    padding: 2rem;
+    min-height: 40rem;
+    display: flex;
+    flex-direction: column;
+    @include mq.mobileM {
+      padding: 1rem;
+    }
+
+    &--logo {
+      text-align: center;
+      img {
+        max-width: 20rem;
+        
+        @include mq.mobileM {
+          max-width: 15rem;
+        }
+      }
+    } 
+
+    &--children {
+      flex-grow: 1;
+    }
+
+    &--footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.8rem;
+      > div {
+        padding: 0 0.8rem;
+        color: va.$bg-btn;
+      }
+
+      > div:nth-child(2) {
+        border-left: 2px solid va.$bg-btn;
+        border-right: 2px solid va.$bg-btn;
+      }
+
+      &-lang {
+        position: relative;
+   
+        &-cur {
+          display: flex;
+          align-items: center;
+          padding: 0.5rem 1rem;
+          &:hover {
+            box-shadow: 0 0 2px #333;
+            cursor: pointer;
+            border-radius: 5px;
+          }
+
+          > img {
+            margin-right: 0.5rem;
+          }
+
+          > span {
+            font-weight: 600;
+          }
+        }
+
+        &-list {
+          position: absolute;
+          top: -5rem;
+          left: 1rem;
+          // display: none;
+          box-shadow: 0 0 2px #333;
+          border-radius: 5px;
+          background-color: #fff;
+
+          >ul >li {
+            padding: 0.5rem 1rem;
+            width: 7rem;
+            display: flex;
+            align-items: center;
+            &:hover {
+              background-color: #ccc;
+              cursor: pointer;
+            }
+
+            >img {
+              margin-right: 1rem;
+            }
+
+            >span {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  &__picture {
+    flex: 1;
+
+    &--image {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    @include mq.tablet {
+      height: 6rem;
+      overflow: hidden;
+      flex: auto;
+    }
+  }
+}

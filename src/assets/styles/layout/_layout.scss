@@ -1,0 +1,70 @@
+@use '../abstracts/variables' as va;
+
+.l-layout {
+  position: relative;
+  width: 100%;
+  background-color: va.$bg-container;
+  
+  &-loading {
+    position: relative;
+    z-index: 10000;
+  }
+
+  &-header {
+    width: 100%;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 999;
+  }
+
+  &-container {
+    display: flex;
+    padding: 0 1rem;
+
+  }
+
+  &-sidebar {
+    // min-width: 18rem;
+    min-height: 100%;
+    padding: 0rem 0.5rem;
+    background-color: #fff;
+    filter: drop-shadow(0 0 6px rgba(0,0,0,.1));
+    z-index: 888;
+    transition: all 0.3s linear;
+
+    &-container {
+      position: sticky;
+      position: -webkit-sticky;
+      top: 5rem;
+      left: 0;
+
+      &-box {
+        height: calc(100vh - 5rem);
+        max-height: calc(100vh - 5rem);
+        height: 100%;
+        min-width: 100%;
+        overflow-y: auto;
+        background-color: #fff;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+   
+    }
+  }
+
+  &-hidenMenu {
+    min-width: 5rem;
+    transition: all 0.3s linear;
+  }
+
+  &-showMenu {
+    min-width: 18rem;
+    width: 18rem;
+    transition: all 0.3s linear;
+  }
+}

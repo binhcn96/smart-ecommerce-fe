@@ -1,0 +1,41 @@
+$mobileS: 320px;
+@mixin mobileS {
+  @media (max-width: $mobileS) {
+    @content
+  }
+}  
+
+$mobileM: 376px;
+@mixin mobileM {
+  @media (max-width: $mobileM) {
+    @content
+  }
+}  
+
+$mobileL: 426px;
+@mixin mobileL {
+  @media (max-width: $mobileL) {
+    @content
+  }
+}  
+
+$tablet: 768px;
+@mixin tablet {
+  @media (max-width: $tablet) {
+    @content
+  }
+}  
+
+$laptop: 1024px;
+@mixin laptop {
+  @media (max-width: $laptop) {
+    @content
+  }
+}  
+
+$laptopL: 1440px;
+@mixin laptopL {
+  @media (max-width: $laptopL) {
+    @content
+  }
+}  

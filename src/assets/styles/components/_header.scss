@@ -1,0 +1,128 @@
+@use '../abstracts/variables' as va;
+@use '../abstracts/mediaQuery' as mq;
+.c-header {
+  height: 5rem;
+  width: 100%;
+  box-shadow: 0 8px 8px rgb(0 0 0 / 10%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  
+  @include mq.mobileL {
+    height: 4rem;
+  }
+
+  &::after {
+    width: 100%;
+    height: 0.2rem;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: va.$red;
+  }
+
+  &-brand{
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &-logo{
+      height: 100%;
+
+      > img {
+        height: 100%;
+      }
+    }
+
+    &-menu{
+      margin-left: 2rem;
+      cursor: pointer;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+
+      @include mq.mobileL {
+        margin: 0rem;
+      }
+
+      &-item{
+        height: 0.2rem;
+        width: 1.7rem;
+        background-color: va.$bg-btn;
+        border-radius: 1rem;
+        position: relative;
+
+        @include mq.mobileL {
+          width: 1.5rem;
+        }
+
+        &::after {
+          content: '';
+          height: 0.2rem;
+          width: 1.7rem;
+          background-color: va.$bg-btn;
+          border-radius: 1rem;
+          position: absolute;
+          top: -0.6rem;
+          left: 0;
+          @include mq.mobileL {
+            width: 1.5rem;
+            top: -0.5rem;
+          }
+  
+        }
+
+        &::before {
+          content: '';
+          height: 0.2rem;
+          width: 1.7rem;
+          background-color: va.$bg-btn;
+          border-radius: 1rem;
+          position: absolute;
+          top: 0.6rem;
+          left: 0;
+          @include mq.mobileL {
+            width: 1.5rem;
+            top: 0.5rem;
+          }
+  
+        }
+      }
+    }
+  }
+
+  &-setting {
+    display: flex;
+    align-items: center;
+
+    &-icon{
+      margin-right: 2rem;
+      cursor: pointer;
+
+      @include mq.mobileL{
+        margin-right: 1rem;
+      }
+
+      @include mq.mobileS{
+        margin-right: 0.5rem;
+      }
+
+      > img {
+        width: 1.8rem;
+        @include mq.mobileL{
+          width: 1.5rem;
+        }
+
+      }
+    }
+
+    &-selectlang{
+      @include mq.tablet{
+        display: none;
+      }
+    }
+  }
+}
+

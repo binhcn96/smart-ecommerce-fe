@@ -1,0 +1,61 @@
+@use '../abstracts/variables' as va;
+
+.c-selectlang {
+  position: relative;
+
+  &-cur {
+    display: flex;
+
+    &-en {
+      border: 0.1rem solid #ccc;
+      border-radius: 0.1rem;
+    }
+
+    &-text {
+      padding: 0 0.5rem;
+    }
+
+    &-arrowup {
+      width: 0.6rem;
+      transform: rotate(180deg);
+      transition: all 0.2s linear;
+    }
+
+    &-arrowdown{
+      width: 0.6rem;
+      transform: rotate(0);
+      transition: all 0.2s linear;
+    }
+  }
+
+  &-list {
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 2px -2px 2px rgb(0 0 0 / 5%), -2px 2px 2px rgb(0 0 0 / 5%);
+    padding: 0.5rem;
+    top: 2.5rem;
+    z-index: 990;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      &:hover {
+        background-color: va.$bg-disable;
+      }
+
+      &:first-child{
+        border-bottom: 1px dotted va.$bg-btn;
+      }
+
+      > img {
+        border: 0.1rem solid #ccc;
+        border-radius: 0.1rem;
+      }
+
+      > span{
+        padding: 0 0.5rem;
+      }
+    }
+  }
+}

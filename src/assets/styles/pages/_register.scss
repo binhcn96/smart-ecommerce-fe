@@ -1,0 +1,67 @@
+@use '../abstracts/variables' as va;
+@use '../abstracts/mediaQuery' as mq;
+
+.p-register{
+  &--title {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  &--sub {
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+  }
+
+  &--country {
+    margin-bottom: 1rem;
+  }
+
+  &--phone {
+    display: flex;
+    margin-bottom: 2rem;
+
+    &-code {
+      margin-right: 1rem;
+      flex: 1;
+    }
+
+    &-number {
+      flex: 2;
+      position: relative;
+      > input {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      // > input:focus {
+      //   border: 2px solid va.$focus;
+      // }
+    }
+  }
+
+  &--btn {
+    margin-bottom: 2rem;
+    > button {
+      width: 100%;
+    }
+  }
+
+  &--link {
+    display: flex;
+    justify-content: space-between;
+
+    &-title {
+      font-size: 0.8rem;
+    }
+
+    &-login {
+      font-weight: 600;
+         
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,26 @@
+// Base scss
+@use './base/resets';
+@use './base/root';
+
+// Global scss
+@use './global/global';
+
+// Layout scss
+@use './layout/layout';
+
+// components scss
+@use './components/loginWelcome';
+@use './components/dropdown';
+@use './components/smsInput';
+@use './components/loading';
+@use './components/header';
+@use './components/selectlang';
+@use './components/tooltip';
+@use './components/sidebar';
+
+// pages scss
+@use './pages/login';
+@use './pages/register';
+@use './pages/smsRegister';
+@use './pages/registInfo';
+@use './pages/dashboard';
