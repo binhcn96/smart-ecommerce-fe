@@ -53,6 +53,7 @@
         background-color: va.$bg-btn;
         border-radius: 1rem;
         position: relative;
+        transition: all 0.3s linear;
 
         @include mq.mobileL {
           width: 1.5rem;
@@ -67,6 +68,7 @@
           position: absolute;
           top: -0.6rem;
           left: 0;
+          transition: all 0.3s linear;
           @include mq.mobileL {
             width: 1.5rem;
             top: -0.5rem;
@@ -83,6 +85,48 @@
           position: absolute;
           top: 0.6rem;
           left: 0;
+          transition: all 0.3s linear;
+          @include mq.mobileL {
+            width: 1.5rem;
+            top: 0.5rem;
+          }
+  
+        }
+      }
+
+      &-close {
+        background-color: #fff;
+        transition: all 0.3s linear;
+          &::after {
+          content: '';
+          height: 0.2rem;
+          width: 1.7rem;
+          background-color: va.$bg-btn;
+          border-radius: 1rem;
+          position: absolute;
+          top: 0rem;
+          left: 0;
+          transform: rotate(45deg);
+          transition: all 0.3s linear;
+          @include mq.mobileL {
+            width: 1.5rem;
+            top: -0.5rem;
+          }
+  
+        }
+
+        &::before {
+          content: '';
+          height: 0.2rem;
+          width: 1.7rem;
+          background-color: va.$bg-btn;
+          border-radius: 1rem;
+          position: absolute;
+          top: 0rem;
+          left: 0;
+          transform: rotate(-45deg);
+          transition: all 0.3s linear;
+
           @include mq.mobileL {
             width: 1.5rem;
             top: 0.5rem;

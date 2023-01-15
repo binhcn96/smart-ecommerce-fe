@@ -1,9 +1,24 @@
 @use '../abstracts/variables' as va;
 
-.c-sidebar {
+.c-sidebar-mobile {
+  width: 18rem;
+  padding: 0.3rem;
   &-info {
     text-align: center;
-
+    &::before {
+      position: absolute;
+      content: '';
+      display: block;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 9rem;
+      // z-index: 1;
+      background: #abbaab;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to top, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to top, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      
+    }
     &-username {
       margin: 3rem 0 1rem;
       font-size: 1.3rem;
@@ -34,30 +49,7 @@
         right: 0rem;
         cursor: pointer;
       }
-    }
-
-    &-avatar-hidenMenu {
-      width: 4rem;
-      height: 4rem;
-      font-size: 2.5rem;
-      margin-top: 2rem;      
-
-    }
-  }
-
-  &-bg{
     
-    &::before {
-      position: absolute;
-      content: '';
-      display: block;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 9rem;
-      background: #abbaab;  /* fallback for old browsers */
-      background: -webkit-linear-gradient(to top, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to top, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
   }
 
@@ -69,20 +61,12 @@
       border-bottom: 1px dotted va.$bg-btn;
       border-top: 1px dotted va.$bg-btn;
       cursor: pointer;
-  }
+    }
 
     &-img{
       width: 1rem;
       margin-right: 1rem;
     }
-
-    &-hidenMenu {
-      margin: auto;
-    }
-  }
-
-  &-hidenMenu {
-    display: none;
   }
 
   &-lang {

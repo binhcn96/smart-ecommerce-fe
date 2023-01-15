@@ -2,6 +2,7 @@ import React from "react"
 import SelectLang from "components/selectLang"
 import { useSelector, useDispatch } from "react-redux"
 import { changeShowMenu } from "redux/slice"
+import cn from 'classnames'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -17,7 +18,7 @@ const Header = () => {
           <img src='/images/logo.png' alt="logo"></img>
         </div>
         <div className="c-header-brand-menu" onClick={handleToggleMenu}>
-          <div className="c-header-brand-menu-item"></div>
+          <div className={cn({ "c-header-brand-menu-item": true, "c-header-brand-menu-close": !showMenu })}></div>
         </div>
       </div>
       <div className="c-header-setting">

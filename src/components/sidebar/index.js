@@ -9,7 +9,7 @@ const SideBar = () => {
   const showMenu = useSelector(state => state.app.showMenu)
   return (
     <div className="c-sidebar">
-      <div className="c-sidebar-info">
+      <div className={cn({ "c-sidebar-info": true, "c-sidebar-bg": showMenu })}>
         <div className={cn({ "c-sidebar-info-username": true, "c-sidebar-hidenMenu": !showMenu })}>Chu Ngoc Binh</div>
         <div className={cn({ "c-sidebar-info-avatar": true, "c-sidebar-info-avatar-hidenMenu": !showMenu })}>
           <span>C</span>

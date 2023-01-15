@@ -12,6 +12,18 @@
   }
 }
 
+.g-input-small {
+  border: 1px solid va.$color-input;
+  outline: none;
+  padding: 0 0.8rem;
+  height: 2.5rem;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  &:focus {
+    border: 2px solid va.$focus;
+  }
+}
+
 .g-dropdown {
   border: 1px solid va.$color-input;
   outline: none;

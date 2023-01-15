@@ -4,5 +4,29 @@ export const lang = [
 ]
 
 export const listMenu = [
-  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' }
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
+  { id: 1, urlImg: '/images/dashboard.svg', title: "c.sidebar.dashboard", tooltip: 'tooltip-c-sidebar-dashboard' },
 ]

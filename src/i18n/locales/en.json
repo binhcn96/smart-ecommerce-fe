@@ -36,5 +36,7 @@
   "c.header.setting": "Setting",
   "c.sidebar.dashboard": "Dashboard",
   "c.sidebar.year": "©2023",
-  "c.sidebar.comp": "Ecommerce cnb Ltd. All rights reserved."
+  "c.sidebar.comp": "Ecommerce cnb Ltd. All rights reserved.",
+  "l.layout.search": "Search...",
+  "l.layout.search.btn": "Search"
 }

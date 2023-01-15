@@ -11,6 +11,7 @@ const TooltipComponent = () => {
       <Tooltip className='c-tooltip' anchorId="tooltip-c-header-notifications" content={t('c.header.notifications')} />
       <Tooltip className='c-tooltip' anchorId="tooltip-c-header-setting" content={t('c.header.setting')} />
       <Tooltip className='c-tooltip' anchorId="tooltip-c-sidebar-dashboard" content={t('c.sidebar.dashboard')} />
+      <Tooltip className='c-tooltip' anchorId="tooltip-l-layout-serch-btn" content={t('l.layout.search.btn')} />
     </>
   )
 }
