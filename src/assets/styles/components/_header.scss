@@ -1,5 +1,7 @@
 @use '../abstracts/variables' as va;
 @use '../abstracts/mediaQuery' as mq;
+@use '../abstracts/keyframe' as kf;
+
 .c-header {
   height: 5rem;
   width: 100%;
@@ -140,6 +142,7 @@
   &-setting {
     display: flex;
     align-items: center;
+    position: relative;
 
     &-icon{
       margin-right: 2rem;
@@ -165,6 +168,54 @@
     &-selectlang{
       @include mq.tablet{
         display: none;
+      }
+    }
+
+    @keyframes showAnimation {
+      0% {
+        top: 2rem;
+        opacity: 0;
+      }
+    
+      100% {
+        top: 3rem;
+        opacity: 1;
+      }
+    }
+
+    &-list {
+      position: absolute;
+      background-color: #fff;
+      box-shadow: 2px -2px 2px rgb(0 0 0 / 5%), -2px 2px 2px rgb(0 0 0 / 5%);
+      padding: 0.5rem;
+      top: 3rem;
+      right: 1rem;
+      z-index: 990;
+      animation: showAnimation 0.3s linear;
+    }
+
+    &-item-setting {
+      
+      padding: 0.5rem 1rem;
+      a {
+        display: flex;
+        align-items: center;
+      }
+
+      &:hover {
+        background-color: va.$bg-disable;
+      }
+
+      &:first-child{
+        border-bottom: 1px dotted va.$bg-btn;
+      }
+
+      img {
+        width: 1.2rem;
+      }
+
+      span{
+        padding: 0 0.5rem;
       }
     }
   }

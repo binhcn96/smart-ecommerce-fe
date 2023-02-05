@@ -1,32 +1,37 @@
-import { createBrowserRouter } from "react-router-dom";
-
 import DashBoard from "pages/dashboard";
 import Login from "pages/login";
 import Register from "pages/register";
 import SmsRegister from "pages/smsRegister";
 import RegistInfo from "pages/registInfo";
+import { pathGuest, pathPrivate } from "constants/path";
+import Security from "pages/security";
 
-const router = createBrowserRouter([
+export const routerPrivate = [
   {
-    path: "/",
-    element: <DashBoard />,
+    path: pathPrivate.dashboard,
+    element: <DashBoard />
   },
   {
-    path: "/login",
-    element: <Login />,
+    path: pathPrivate.security_setting,
+    element: <Security />
   },
-  {
-    path: "/signup",
-    element: <Register />,
-  },
-  {
-    path: "/signup/sms",
-    element: <SmsRegister />,
-  },
-  {
-    path: "/signup/info",
-    element: <RegistInfo />,
-  },
-]);
+]
 
-export default router
+export const routerGuest = [
+  {
+    path: pathGuest.login,
+    element: <Login />
+  },
+  {
+    path: pathGuest.signup,
+    element: <Register />
+  },
+  {
+    path: pathGuest.signup_sms,
+    element: <SmsRegister />
+  },
+  {
+    path: pathGuest.signup_info,
+    element: <RegistInfo />
+  },
+]

@@ -6,13 +6,16 @@ import i18n from './i18n/translation';
 import { I18nextProvider } from 'react-i18next';
 import { store } from './redux/store'
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
       <I18nextProvider i18n={i18n}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </I18nextProvider>
     </Provider>
   </React.StrictMode>

@@ -38,5 +38,17 @@
   "c.sidebar.year": "©2023",
   "c.sidebar.comp": "Ecommerce cnb Ltd. All rights reserved.",
   "l.layout.search": "Search...",
-  "l.layout.search.btn": "Search"
+  "l.layout.search.btn": "Search",
+  "c.header.setting.profile": "Profile Settings",
+  "c.header.setting.security": "Security Settings",
+  "title.security": "Security Settings",
+  "title.dashboard": "Dashboard",
+  "p.security.twofa": "Two-Step Authentication",
+  "p.security.description": "When you perform important operations such as changing registration information, you can use any of the following authentication methods to prevent operations by impersonators.",
+  "c.twofa.pass": "Login Password Authentication (Default)",
+  "c.twofa.pass.description": "You will be asked to re-enter your login password when you perform important operations.",
+  "c.twofa.sms": "Two-Step Authentication Using SMS",
+  "c.twofa.sms.description": "When you perform an important operation, a message with a 6-digit authentication code will be sent to your authenticated registered phone number, and you will be asked to enter the authentication code for added security.",
+  "c.twofa.app": "Two-Step Authentication Using Authentication App",
+  "c.twofa.app.description": "You can install Google Authenticator on your smartphone and enter the 6-digit authentication code displayed on the authentication app when performing important operations for added security"
 }

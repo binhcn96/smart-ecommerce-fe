@@ -7,3 +7,15 @@
     left: 16rem;
   }
 }
+
+@keyframes showAnimation {
+  0% {
+    top: 2rem;
+    opacity: 0;
+  }
+
+  100% {
+    top: 3rem;
+    opacity: 1;
+  }
+}

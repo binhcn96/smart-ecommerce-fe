@@ -1,20 +1,23 @@
 import Header from "components/header"
-import Loading from "components/loading"
 import TooltipComponent from "components/tooltip"
 import { useSelector } from 'react-redux'
 import cn from 'classnames'
 import SideBar from "components/sidebar"
 import { useTranslation } from 'react-i18next';
 import SideBarMobile from "components/sidebarMobile"
+import Loading from "components/loading"
+import { title_body } from "constants/constant"
 
 const Layout = ({ children }) => {
   const user = useSelector(state => state.app.user)
-  const loading = useSelector(state => state.app.loading)
   const showMenu = useSelector(state => state.app.showMenu)
+  const loading = useSelector(state => state.app.loading)
+  const path = useSelector(state => state.app.path)
   const { t } = useTranslation()
+
   return (
     <div className="l-layout">
-      {loading && (
+      {loading === 'loading' && (
         <div className="l-layout-loading">
           <Loading />
         </div>
@@ -62,7 +65,13 @@ const Layout = ({ children }) => {
             )
           }
           <div className="l-layout-content">
-            {children}
+            <div className="l-layout-content-title">
+              <img src={title_body[path]?.imgUrl} alt="title" className="l-layout-content-title-icon"></img>
+              <div className="l-layout-content-title-text">{t(title_body[path]?.title)}</div>
+            </div>
+            <div className={cn({ "l-layout-content-body": user })}>
+              {children}
+            </div>
           </div>
         </div>
       </div>

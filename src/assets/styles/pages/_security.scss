@@ -1,0 +1,30 @@
+@use '../abstracts/variables' as va;
+
+.p-security {
+  background-color: #fff;
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+
+  &-title {
+    font-weight: 600;
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid va.$color-botom-title;
+    margin-bottom: 1.5rem;
+  }
+
+  &-description {
+    background-color: va.$bg-disable;
+    padding: 1rem;
+    border-radius: 0.2rem;
+    color: va.$color-text-description;
+    margin-bottom: 2rem;
+  }
+
+  &-twofa {
+    margin-bottom: 1rem;
+    border: 1px solid va.$color-botom-title;
+    padding: 1.5rem 1rem;
+    border-radius: 0.5rem;
+  }
+}

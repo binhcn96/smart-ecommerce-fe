@@ -82,6 +82,11 @@
       font-weight: 600;
     }
 
+    &-lang {
+      margin: 1rem 0;
+      cursor: pointer;
+    }
+
     &-year, &-comp {
       font-size: 0.8rem;
       margin: 1rem 0;

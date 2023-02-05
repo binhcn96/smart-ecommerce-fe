@@ -2,18 +2,19 @@ import React, { useEffect, useRef, useState } from "react"
 import useLocale from "hooks/useLocate"
 import LoginWelcome from "components/loginWelcome"
 import { Link, useNavigate } from "react-router-dom";
-import { login, loginGoogleSSO } from "services/user";
 // import CryptoJS from 'crypto-js'
 import ReCAPTCHA from "react-google-recaptcha";
 import { authFirebase } from "plugin/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { setLocalStorage } from "util/utility";
+import { useDispatch } from "react-redux";
+import { loginSSO, loginUser } from "redux/action";
 
 const Login = () => {
   const [user, setUser] = useState({})
   const [checked, setChecked] = useState(false)
   const navigate = useNavigate()
   const recaptchaRef = useRef();
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const userJSON = localStorage.getItem('user')
@@ -32,10 +33,8 @@ const Login = () => {
         ...user,
         recapchaToken: tokenRecaptcha
       }
-      const result = await login(data)
-      if (result.status) {
-        navigate('/')
-      }
+      await dispatch(loginUser(data))
+      navigate('/')
     } catch (error) {
       console.log(error)
     }
@@ -65,17 +64,22 @@ const Login = () => {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(authFirebase, provider);
       const tokenAuth = await authFirebase.currentUser.getIdToken();
-      const resLogin = await loginGoogleSSO({
+      await dispatch(loginSSO({
         idToken: tokenAuth,
         recapchaToken,
         rule: 'firebase',
-      });
+      }))
+      // const resLogin = await loginGoogleSSO({
+      //   idToken: tokenAuth,
+      //   recapchaToken,
+      //   rule: 'firebase',
+      // });
 
-      if (resLogin.status === 'success') {
-        setLocalStorage(resLogin?.token, resLogin?.refresh_token);
-        // dispatch(changeUserInfo(resLogin?.data?.data));
-        navigate('/');
-      }
+      // if (resLogin.status === 'success') {
+      //   setLocalStorage(resLogin?.token, resLogin?.refresh_token);
+      // dispatch(changeUserInfo(resLogin?.data?.data));
+      navigate('/');
+      // }
     } catch (error) {
       console.log(error);
     }

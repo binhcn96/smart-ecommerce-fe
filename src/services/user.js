@@ -23,3 +23,11 @@ export function loginGoogleSSO(data) {
     data,
   });
 }
+
+export function getMe() {
+  console.log('get me');
+  return request({
+    url: '/auth/me',
+    method: 'GET',
+  });
+}

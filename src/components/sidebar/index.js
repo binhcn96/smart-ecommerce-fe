@@ -7,10 +7,12 @@ import cn from 'classnames'
 const SideBar = () => {
   const { t } = useTranslation()
   const showMenu = useSelector(state => state.app.showMenu)
+  const user = useSelector(state => state.app.user)
+
   return (
     <div className="c-sidebar">
       <div className={cn({ "c-sidebar-info": true, "c-sidebar-bg": showMenu })}>
-        <div className={cn({ "c-sidebar-info-username": true, "c-sidebar-hidenMenu": !showMenu })}>Chu Ngoc Binh</div>
+        <div className={cn({ "c-sidebar-info-username": true, "c-sidebar-hidenMenu": !showMenu })}>{user.user_name}</div>
         <div className={cn({ "c-sidebar-info-avatar": true, "c-sidebar-info-avatar-hidenMenu": !showMenu })}>
           <span>C</span>
           <img src="/images/icon_camera.svg" className="c-sidebar-info-avatar-camera" alt='camera'></img>
