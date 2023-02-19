@@ -19,6 +19,9 @@
 @use './components/sidebar';
 @use './components/sidebarMobile';
 @use './components/twoFaItem';
+@use './components/profileSettingItem';
+@use './components/modal';
+@use './components/success';
 
 // pages scss
 @use './pages/login';
@@ -27,3 +30,4 @@
 @use './pages/registInfo';
 @use './pages/dashboard';
 @use './pages/security';
+@use './pages/profileSetting';

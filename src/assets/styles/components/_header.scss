@@ -112,9 +112,7 @@
           transition: all 0.3s linear;
           @include mq.mobileL {
             width: 1.5rem;
-            top: -0.5rem;
           }
-  
         }
 
         &::before {
@@ -131,7 +129,6 @@
 
           @include mq.mobileL {
             width: 1.5rem;
-            top: 0.5rem;
           }
   
         }
@@ -171,18 +168,6 @@
       }
     }
 
-    @keyframes showAnimation {
-      0% {
-        top: 2rem;
-        opacity: 0;
-      }
-    
-      100% {
-        top: 3rem;
-        opacity: 1;
-      }
-    }
-
     &-list {
       position: absolute;
       background-color: #fff;
@@ -218,6 +203,20 @@
         padding: 0 0.5rem;
       }
     }
+  }
+
+  &-modal-logout {
+    text-align: center;
+    &-body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-content {
+      margin-bottom: 1rem;
+    }
+
   }
 }
 

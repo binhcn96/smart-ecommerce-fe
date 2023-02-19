@@ -5,7 +5,7 @@ import cn from 'classnames'
 import SelectLang from "components/selectLang";
 import { useSelector } from "react-redux";
 
-const SideBarMobile = () => {
+const SideBarMobile = ({ onShowModal }) => {
   const { t } = useTranslation()
   const user = useSelector(state => state.app.user)
 
@@ -14,8 +14,14 @@ const SideBarMobile = () => {
       <div className={cn({ "c-sidebar-mobile-info": true, })}>
         <div className={cn({ "c-sidebar-mobile-info-username": true })}>{user.user_name}</div>
         <div className={cn({ "c-sidebar-mobile-info-avatar": true })}>
-          <span>C</span>
-          <img src="/images/icon_camera.svg" className="c-sidebar-mobile-info-avatar-camera" alt='camera'></img>
+          {
+            user.profile_picture ? (
+              <img src={user.profile_picture} alt="avatar" className="c-sidebar-mobile-info-avatar-img" ></img>
+            ) : (
+              <span>{user.user_name[0]}</span>
+            )
+          }
+          <img src="/images/icon_camera.svg" className="c-sidebar-mobile-info-avatar-camera" alt='camera' onClick={onShowModal}></img>
         </div>
       </div>
       <div className="c-sidebar-mobile-menu">

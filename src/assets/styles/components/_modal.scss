@@ -1,0 +1,97 @@
+@use '../abstracts/variables' as va;
+@use '../abstracts/mediaQuery' as mq;
+@use '../abstracts/keyframe' as kf;
+
+.c-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999999;
+  background-color: va.$bg-modal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-box {
+    min-width: 40rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    animation: showAnimation 0.3s linear ;
+
+    @include mq.tablet {
+      min-width: 80%;
+    }
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: va.$bg-btn;
+    padding: 1rem 1rem;
+    border-top-right-radius: 0.2rem;
+    border-top-left-radius: 0.2rem;
+    
+    &-title {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    &-close {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      img {
+        width: 1.2rem;
+      }
+    }
+  }
+
+  &-body {
+    min-height: 10rem;
+    padding: 1rem;
+    @include mq.tablet {
+      min-height: 10rem;
+    }
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: flex-end;
+    background-color: va.$bg-container;
+    padding: 1rem 1rem;
+    border-top: 1px solid va.$color-botom-title;
+    border-bottom-right-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+
+    @include mq.mobileL {
+      justify-content: center;
+      padding: 0.5rem 1rem;
+    }
+
+    button {
+      color: #fff;
+      background-color: va.$bg-btn;
+      padding: 0.8rem 1rem;
+      border-radius: 0.2rem;
+      border: none;
+      min-width: 8rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+
+      @include mq.tablet {
+        font-size: 1rem;
+        padding: 0.5rem 0.8rem;
+      }
+
+      &:first-child {
+        background-color: #ccc;
+        margin-right: 1rem;
+      }
+    }
+  }
+}

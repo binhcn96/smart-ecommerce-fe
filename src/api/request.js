@@ -6,10 +6,7 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(function (config) {
-  console.log('request', config);
-
   const authToken = localStorage.getItem('Auth-token')
-  console.log('auth token', authToken)
   if (authToken) {
     config.headers['Authorization'] = 'Bearer ' + authToken
   }
@@ -21,11 +18,9 @@ instance.interceptors.request.use(function (config) {
 
 // Add a response interceptor
 instance.interceptors.response.use(function (response) {
-  console.log(response)
   return response.data;
 }, function (error) {
   const { response } = error
-  console.log(error);
   // if (response.status === 403) {
   //   emiter.emit('forbiden')
   // }

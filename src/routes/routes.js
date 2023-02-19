@@ -5,6 +5,7 @@ import SmsRegister from "pages/smsRegister";
 import RegistInfo from "pages/registInfo";
 import { pathGuest, pathPrivate } from "constants/path";
 import Security from "pages/security";
+import ProfileSetting from "pages/profileSetting";
 
 export const routerPrivate = [
   {
@@ -14,6 +15,10 @@ export const routerPrivate = [
   {
     path: pathPrivate.security_setting,
     element: <Security />
+  },
+  {
+    path: pathPrivate.profile_setting,
+    element: <ProfileSetting />
   },
 ]
 

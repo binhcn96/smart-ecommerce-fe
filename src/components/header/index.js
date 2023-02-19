@@ -1,20 +1,31 @@
 import React, { useState } from "react"
 import SelectLang from "components/selectLang"
 import { useSelector, useDispatch } from "react-redux"
-import { changeShowMenu } from "redux/slice"
+import { changeShowMenu, logOut } from "redux/slice"
 import cn from 'classnames'
 import { listSetting } from "constants/constant"
-import { t } from "i18next"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+import Modal from "components/modal"
+import { deleteLocalStorage } from "util/utility"
 
 const Header = () => {
+  const { t } = useTranslation()
   const [showSetting, setShowSetting] = useState(false)
-
+  const [showModal, setShowModal] = useState(false)
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const showMenu = useSelector(state => state.app.showMenu)
   const handleToggleMenu = () => {
     dispatch(changeShowMenu(!showMenu))
   }
+
+  const handleLogout = () => {
+    deleteLocalStorage()
+    dispatch(logOut())
+    navigate('/login')
+  }
+
   return (
     <div className="c-header">
       <div className="c-header-brand">
@@ -31,7 +42,7 @@ const Header = () => {
         <div className="c-header-setting-icon c-header-setting-selectlang">
           <SelectLang />
         </div>
-        <div className="c-header-setting-icon" id='tooltip-c-header-logout'>
+        <div className="c-header-setting-icon" id='tooltip-c-header-logout' onClick={() => setShowModal(true)}>
           <img src="/images/logout-icon.svg" alt="setting-icon"></img>
         </div>
         <div className="c-header-setting-icon" id='tooltip-c-header-notifications'>
@@ -44,8 +55,8 @@ const Header = () => {
               <ul className="c-header-setting-list">
                 {
                   listSetting.map(el => (
-                    <li className="c-header-setting-item-setting" key={el.id}>
-                      <Link to={'/security-setting'}>
+                    <li className="c-header-setting-item-setting" key={el.id} onClick={() => setShowSetting(false)}>
+                      <Link to={el.path}>
                         <img className="c-header-setting-item-setting-img" src={el.urlImg} alt="setting-icon"></img>
                         <span className="c-header-setting-item-setting-text">{t(el.title)}</span>
                       </Link>
@@ -57,6 +68,25 @@ const Header = () => {
           }
         </div>
       </div>
+      {
+        showModal && (
+          <Modal
+            title={t('c.header.logout')}
+            onCancel={() => setShowModal(false)}
+            onConfirm={() => handleLogout()}
+            className={'c-header-modal-logout-body'}
+          >
+            <div className="c-header-modal-logout">
+              <div className="c-header-modal-logout-content">
+                {t('c.header.logout.content')}
+              </div>
+              <div>
+                {t('c.header.logout.confirm')}
+              </div>
+            </div>
+          </Modal>
+        )
+      }
     </div>
   )
 }

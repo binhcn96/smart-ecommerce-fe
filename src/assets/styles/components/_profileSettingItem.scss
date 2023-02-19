@@ -1,0 +1,60 @@
+@use '../abstracts/variables' as va;
+@use '../abstracts/mediaQuery' as mq;
+
+.c-security-item-table-row{
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  @include mq.tablet {
+    flex-direction: column;
+  }
+}
+
+.c-security-item-table-head{
+  width: 13rem;
+  border-right: 1px solid va.$bg-btn;
+  padding: 1rem;
+  background-color: va.$bg-disable;
+
+  @include mq.tablet {
+    width: 100%;
+    padding: 0.5rem;
+    font-weight: 700;
+    border: none;
+  }
+}
+
+.c-security-item-table-body{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding-left: 1rem;
+  
+  @include mq.tablet {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  &-content {
+    word-break:break-all;
+  }
+
+  &-button {
+    padding-right: 1rem;
+
+    @include mq.tablet {
+      padding-right: 0.5rem;
+    }
+
+    button {
+      background-color: va.$bg-btn;
+      border-radius: 0.3rem;
+      padding: 0.5rem 0.7rem;
+      color: #fff;
+      cursor: pointer;
+      border: none;
+    }
+  }
+}

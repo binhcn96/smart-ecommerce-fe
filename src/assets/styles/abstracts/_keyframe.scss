@@ -19,3 +19,21 @@
     opacity: 1;
   }
 }
+
+@keyframes success {
+  0% {
+    top: -1rem;
+  }
+
+  25% {
+    top: 0rem;
+  }
+
+  50% {
+    top: -1rem;
+  }
+
+  100% {
+    top: 0rem;
+  }
+}

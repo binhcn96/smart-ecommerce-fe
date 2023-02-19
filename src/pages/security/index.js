@@ -16,7 +16,7 @@ const Security = () => {
     <div className="p-security">
       <div className="p-security-title">{t('p.security.twofa')}</div>
       <div className="p-security-description">{t('p.security.description')}</div>
-      <div>
+      <div className="p-security-group">
         {
           twoStep.map(el => (
             <div className="p-security-twofa">
@@ -24,6 +24,7 @@ const Security = () => {
                 img={el.urlImg}
                 title={el.title}
                 description={el.description}
+                tooltip={el.tooltip}
               ></TwoFaItem>
             </div>
           ))

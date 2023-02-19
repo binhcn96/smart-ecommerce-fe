@@ -12,6 +12,9 @@ const TooltipComponent = () => {
       <Tooltip className='c-tooltip' anchorId="tooltip-c-header-setting" content={t('c.header.setting')} />
       <Tooltip className='c-tooltip' anchorId="tooltip-c-sidebar-dashboard" content={t('c.sidebar.dashboard')} />
       <Tooltip className='c-tooltip' anchorId="tooltip-l-layout-serch-btn" content={t('l.layout.search.btn')} />
+      <Tooltip className='c-tooltip' anchorId="tooltip-p-security-pass" content={t('p.security.2fa.pass')} />
+      <Tooltip className='c-tooltip' anchorId="tooltip-p-security-sms" content={t('p.security.2fa.sms')} />
+      <Tooltip className='c-tooltip' anchorId="tooltip-p-security-app" content={t('p.security.2fa.app')} />
     </>
   )
 }

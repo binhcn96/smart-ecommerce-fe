@@ -8,7 +8,7 @@
   
   &-loading {
     position: relative;
-    z-index: 10000;
+    z-index: 100000000;
   }
 
   &-header {
@@ -163,5 +163,68 @@
   &-sidebar-mobile-hide{
     left: 0;
     transition: all 0.3s linear;
+  }
+
+  &-modal-content {
+    margin-bottom: 1rem;
+  }
+
+  &-modal-avatar {
+    padding: 2rem 0 1rem ;
+    background-color: #ccc;
+    border-radius: 0.3rem;
+    
+    &-dropzone {
+      text-align: center;
+      
+    }
+
+    &-drop{
+      width: 5rem;
+    }
+
+    &-description {
+      padding: 1rem 0;
+    }
+
+    &-select {
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    &-range {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1rem;
+      input {
+        height: 0.5rem;
+        border-radius: 3rem;
+        width: 10rem;
+      }
+
+      &-group {
+        display: flex;
+        align-items: center;
+
+        > div {
+          width: 4rem;
+        }
+      }
+    }
+
+    &-delete {
+      padding: 0.2rem 1rem;
+      border: none;
+      background-color: va.$bg-btn;
+      color: #fff;
+      border-radius: 0.2rem;
+      display: inline;
+      font-size: 0.8rem;
+      margin-left: 1rem; 
+      cursor: pointer;     
+    }
   }
 }

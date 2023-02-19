@@ -1,16 +1,6 @@
 @use '../abstracts/keyframe' as kf;
 @use '../abstracts/variables' as va;
 
-@keyframes loading {
-  0% {
-    left: 0;
-  }
-
-  100% {
-    left: 16rem;
-  }
-}
-
 .c-loading {
   position: fixed;
   height: 100vh;

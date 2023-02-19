@@ -1,6 +1,7 @@
 export const pathPrivate = {
   dashboard: '/',
-  security_setting: '/security-setting'
+  security_setting: '/security-setting',
+  profile_setting: '/profile-setting'
 }
 
 export const pathGuest = {

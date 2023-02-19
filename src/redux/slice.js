@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { setLocalStorage } from 'util/utility'
-import { fetchUserInfo, loginSSO, loginUser } from './action'
+import { fetchUserInfo, loginSSO, loginUser, upLoadAvatar } from './action'
 
 const initialState = {
   user: null,
   loading: 'idle',
+  loadingPage: false,
+  alertPage: true,
   showMenu: true,
   path: null
 }
@@ -23,6 +25,15 @@ export const appSlice = createSlice({
     changePath: (state, action) => {
       state.path = action.payload
     },
+    logOut: (state) => {
+      state.user = null
+    },
+    changeLoading: (state, action) => {
+      state.loadingPage = action.payload
+    },
+    changeUserInfo: (state, action) => {
+      state.user[action.payload.key] = action.payload.value
+    },
   },
   extraReducers: {
     [fetchUserInfo.fulfilled]: (state, action) => {
@@ -36,7 +47,6 @@ export const appSlice = createSlice({
       state.loading = 'error'
     },
     [loginUser.fulfilled]: (state, action) => {
-      console.log(action);
       state.user = action.payload.data
       setLocalStorage(action.payload.token, action.payload.refreshToken);
       state.loading = 'done'
@@ -58,9 +68,19 @@ export const appSlice = createSlice({
     [loginSSO.rejected]: (state) => {
       state.loading = 'error'
     },
+    [upLoadAvatar.pending]: (state) => {
+      state.loading = 'loading'
+    },
+    [upLoadAvatar.rejected]: (state) => {
+      state.loading = 'error'
+    },
+    [upLoadAvatar.fulfilled]: (state, action) => {
+      state.loading = 'done'
+      state.user.profile_picture = action.payload.url
+    },
   }
 })
 
-export const { changeShowMenu, changeLoading, changePath } = appSlice.actions
+export const { changeShowMenu, changePath, logOut, changeLoading, changeUserInfo } = appSlice.actions
 
 export default appSlice.reducer
