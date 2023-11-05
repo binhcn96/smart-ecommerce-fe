@@ -6,18 +6,18 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { changeLoading, changePath } from "redux/slice";
-import { changeEmailProfile, checkFiledExist } from "services/user";
-import cn from 'classnames'
+import { changeEmailProfile, checkFiledExist, updateUser } from "services/user";
 import { statusResponse } from "util/common";
 import Success from "components/success";
+import ChangeProfile from "components/changeProfile";
 
 const ProfileSetting = () => {
   const { t } = useTranslation()
   const user = useAuth()
   const [showModal, setShowModal] = useState(false)
   const [currentInfor, setCurrentInfo] = useState()
-  const [errorEmail, setErrorEmail] = useState()
-  const [newEmail, setNewEmail] = useState()
+  const [errorInput, setErrorInput] = useState(false)
+  const [newText, setNewText] = useState()
   const [showSuccess, setShowSuccess] = useState(false)
   const dispatch = useDispatch()
   useEffect(() => {
@@ -31,20 +31,28 @@ const ProfileSetting = () => {
   const handleConfirm = async () => {
     try {
       dispatch(changeLoading(true))
-      if (currentInfor === 'email') {
-        const data = {
-          fieldName: 'email',
-          fieldValue: newEmail
-        }
-        const res = await checkFiledExist(data)
-        if (res.status === statusResponse.SUCCESS) {
-          await changeEmailProfile(data)
-        }
+      let data
+      switch (currentInfor) {
+        case 'email':
+        case 'user_name':
+          data = {
+            fieldName: currentInfor,
+            fieldValue: newText
+          }
+          const res = await checkFiledExist(data)
+          if (res.status === statusResponse.FAIL) {
+            throw new Error('Field exist')
+          }
+          break;
+
+        default:
+          break;
       }
+      await updateUser(data)
       dispatch(changeLoading(false))
       setShowSuccess(true)
     } catch (error) {
-      setErrorEmail(true)
+      setErrorInput(true)
       dispatch(changeLoading(false))
     }
   }
@@ -56,6 +64,19 @@ const ProfileSetting = () => {
           currentInfor === 'phone_number' ? 'p.profile.setting.modal.phone_number' :
             'p.profile.setting.modal.address'
     return title
+  }
+
+  const handleChangeInput = (e, mode) => {
+    switch (mode) {
+      case 'email':
+      case 'user_name':
+        setNewText(e.target.value)
+        break;
+
+      default:
+        break;
+    }
+    console.log(e.target.value, mode)
   }
 
   return (
@@ -83,18 +104,60 @@ const ProfileSetting = () => {
             onConfirm={handleConfirm}
           >
             {
-              currentInfor === 'email' && (
-                <div className="p-profile-setting-modal">
-                  <p className="p-profile-setting-modal-title">{t('p.profile.setting.modal.email.des')}</p>
-                  <div className="p-profile-setting-modal-group">
-                    <div className="p-profile-setting-modal-brand">
-                      {t('p.profile.setting.modal.email.title')}
-                    </div>
-                    <input className={`g-input p-profile-setting-modal-input ${errorEmail && 'p-profile-setting-modal-input-error'}`} onChange={(e) => { setNewEmail(e.target.value); setErrorEmail(false) }}></input>
-                    <div className={cn({ 'p-profile-setting-modal-error': errorEmail, 'p-profile-setting-modal-message': true })}>{t('p.profile.setting.modal.email.exist')}</div>
-                  </div>
-                </div>
-              )
+              currentInfor === 'email' &&
+              <ChangeProfile
+                title={{
+                  title: 'p.profile.setting.modal.email.des',
+                }}
+                inputBlock={[
+                  {
+                    label: 'p.profile.setting.modal.email.title',
+                    errorText: 'p.profile.setting.modal.email.exist',
+                    mode: 'email',
+                    onChange: handleChangeInput,
+                    isError: errorInput
+                  }
+                ]}
+              />
+            }
+            {
+              currentInfor === 'user_name' &&
+              <ChangeProfile
+                title={{
+                  title: 'p.profile.setting.modal.username.title',
+                }}
+                inputBlock={[
+                  {
+                    label: 'p.profile.setting.modal.username.label',
+                    errorText: 'p.profile.setting.modal.username.exist',
+                    mode: 'user_name',
+                    onChange: handleChangeInput,
+                    isError: errorInput
+                  }
+                ]}
+              />
+            }
+            {
+              currentInfor === 'password' &&
+              <ChangeProfile
+                title={{
+                  title: 'p.profile.setting.modal.password.title',
+                }}
+                inputBlock={[
+                  {
+                    label: 'p.profile.setting.modal.password.label.old',
+                    mode: 'password',
+                    onChange: handleChangeInput,
+                  },
+                  {
+                    label: 'p.profile.setting.modal.password.label.new',
+                    errorText: 'p.profile.setting.modal.password.exist',
+                    mode: 'cfpassword',
+                    onChange: handleChangeInput,
+                    isError: errorInput
+                  }
+                ]}
+              />
             }
           </Modal>
         )

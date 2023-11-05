@@ -56,3 +56,11 @@ export function changeEmailProfile(data) {
     data
   });
 }
+
+export function updateUser (data) {
+  return request({
+    url: '/auth/update-user',
+    method: 'post',
+    data
+  });
+}
