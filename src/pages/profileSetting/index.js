@@ -5,7 +5,7 @@ import useAuth from "hooks/useAuth";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { changeLoading, changePath } from "redux/slice";
+import { changeLoading, changePath, changeUserInfo } from "redux/slice";
 import { changeEmailProfile, checkFiledExist, updateUser } from "services/user";
 import { statusResponse } from "util/common";
 import Success from "components/success";
@@ -15,9 +15,10 @@ const ProfileSetting = () => {
   const { t } = useTranslation()
   const user = useAuth()
   const [showModal, setShowModal] = useState(false)
-  const [currentInfor, setCurrentInfo] = useState()
+  const [currentInfo, setCurrentInfo] = useState()
   const [errorInput, setErrorInput] = useState(false)
   const [newText, setNewText] = useState()
+  const [newPassword, setNewPassword] = useState()
   const [showSuccess, setShowSuccess] = useState(false)
   const dispatch = useDispatch()
   useEffect(() => {
@@ -32,23 +33,37 @@ const ProfileSetting = () => {
     try {
       dispatch(changeLoading(true))
       let data
-      switch (currentInfor) {
+      switch (currentInfo) {
         case 'email':
         case 'user_name':
+        case 'phone_number':
+        case 'address':
           data = {
-            fieldName: currentInfor,
-            fieldValue: newText
+            fieldName: currentInfo,
+            fieldData: {
+              [currentInfo]: newText,
+            }
           }
           const res = await checkFiledExist(data)
           if (res.status === statusResponse.FAIL) {
             throw new Error('Field exist')
           }
           break;
+          case 'password':
+            data = {
+              fieldName: currentInfo,
+              fieldData: {
+                old_password: newText,
+                new_password: newPassword
+              }
+            }
+            break;
 
         default:
           break;
       }
       await updateUser(data)
+      dispatch(changeUserInfo({[currentInfo]: newText}))
       dispatch(changeLoading(false))
       setShowSuccess(true)
     } catch (error) {
@@ -58,10 +73,10 @@ const ProfileSetting = () => {
   }
 
   const renderTitleModal = () => {
-    const title = currentInfor === 'email' ? 'p.profile.setting.modal.email' :
-      currentInfor === 'user_name' ? 'p.profile.setting.modal.username' :
-        currentInfor === 'password' ? 'p.profile.setting.modal.password' :
-          currentInfor === 'phone_number' ? 'p.profile.setting.modal.phone_number' :
+    const title = currentInfo === 'email' ? 'p.profile.setting.modal.email' :
+      currentInfo === 'user_name' ? 'p.profile.setting.modal.username' :
+        currentInfo === 'password' ? 'p.profile.setting.modal.password' :
+          currentInfo === 'phone_number' ? 'p.profile.setting.modal.phone_number' :
             'p.profile.setting.modal.address'
     return title
   }
@@ -70,13 +85,18 @@ const ProfileSetting = () => {
     switch (mode) {
       case 'email':
       case 'user_name':
+      case 'old_password':
+      case 'phone_number':
+      case 'address':
         setNewText(e.target.value)
+        break;
+      case 'new_password':
+        setNewPassword(e.target.value)
         break;
 
       default:
         break;
     }
-    console.log(e.target.value, mode)
   }
 
   return (
@@ -99,12 +119,12 @@ const ProfileSetting = () => {
       {
         showModal && (
           <Modal
-            onCancel={() => setShowModal(false)}
+            onCancel={() => {setShowModal(false); setErrorInput(false)}}
             title={t(renderTitleModal())}
             onConfirm={handleConfirm}
           >
             {
-              currentInfor === 'email' &&
+              currentInfo === 'email' &&
               <ChangeProfile
                 title={{
                   title: 'p.profile.setting.modal.email.des',
@@ -121,7 +141,7 @@ const ProfileSetting = () => {
               />
             }
             {
-              currentInfor === 'user_name' &&
+              currentInfo === 'user_name' &&
               <ChangeProfile
                 title={{
                   title: 'p.profile.setting.modal.username.title',
@@ -138,7 +158,7 @@ const ProfileSetting = () => {
               />
             }
             {
-              currentInfor === 'password' &&
+              currentInfo === 'password' &&
               <ChangeProfile
                 title={{
                   title: 'p.profile.setting.modal.password.title',
@@ -146,13 +166,47 @@ const ProfileSetting = () => {
                 inputBlock={[
                   {
                     label: 'p.profile.setting.modal.password.label.old',
-                    mode: 'password',
+                    mode: 'old_password',
                     onChange: handleChangeInput,
                   },
                   {
                     label: 'p.profile.setting.modal.password.label.new',
                     errorText: 'p.profile.setting.modal.password.exist',
-                    mode: 'cfpassword',
+                    mode: 'new_password',
+                    onChange: handleChangeInput,
+                    isError: errorInput
+                  }
+                ]}
+              />
+            }
+            {
+              currentInfo === 'phone_number' &&
+              <ChangeProfile
+                title={{
+                  title: 'p.profile.setting.modal.phone_number.title',
+                }}
+                inputBlock={[
+                  {
+                    label: 'p.profile.setting.modal.phone_number.label',
+                    errorText: 'p.profile.setting.modal.phone_number.exist',
+                    mode: 'phone_number',
+                    onChange: handleChangeInput,
+                    isError: errorInput
+                  }
+                ]}
+              />
+            }
+            {
+              currentInfo === 'address' &&
+              <ChangeProfile
+                title={{
+                  title: 'p.profile.setting.modal.address.title',
+                }}
+                inputBlock={[
+                  {
+                    label: 'p.profile.setting.modal.address.label',
+                    errorText: 'p.profile.setting.modal.address.exist',
+                    mode: 'address',
                     onChange: handleChangeInput,
                     isError: errorInput
                   }

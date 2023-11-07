@@ -32,7 +32,7 @@ export const appSlice = createSlice({
       state.loadingPage = action.payload
     },
     changeUserInfo: (state, action) => {
-      state.user[action.payload.key] = action.payload.value
+      state.user = {...state.user, ...action.payload}
     },
   },
   extraReducers: {
