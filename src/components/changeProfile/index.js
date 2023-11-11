@@ -1,6 +1,5 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import cn from "classnames";
 
 const ChangeProfile = (props) => {
   const { title, inputBlock } = props

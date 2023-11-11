@@ -88,6 +88,11 @@
   "p.profile.setting.modal.address": "Change adress",
   "p.profile.setting.modal.address.title": "Please enter new address number and click \"Confirm\"",
   "p.profile.setting.modal.address.label": "New address",
+  "p.profile.setting.modal.username.success": "Your user name have been changed successfully",
+  "p.profile.setting.modal.password.success": "Your password have been changed successfully",
+  "p.profile.setting.modal.phone_number.success": "Your phone number have been changed successfully",
+  "p.profile.setting.modal.address.success": "Your address have been changed successfully",
+
   "c.modal.cancel": "Cancel",
   "c.modal.confirm": "Confirm",
   "c.success.request": "Request",

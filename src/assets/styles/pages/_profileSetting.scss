@@ -28,7 +28,7 @@
     &-row {
       border-bottom: 1;
 
-      &:not(:last-child) { 
+      &:not(:last-child) {
         border-bottom: 1px dotted va.$color-text-description;
       }
     }
@@ -36,6 +36,7 @@
 
   &-modal {
     margin: auto;
+
     &-title {
       margin-bottom: 1rem;
     }
@@ -67,5 +68,13 @@
     &-error {
       display: block;
     }
+  }
+
+  &-success {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

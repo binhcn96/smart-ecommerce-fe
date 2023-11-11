@@ -6,9 +6,8 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { changeLoading, changePath, changeUserInfo } from "redux/slice";
-import { changeEmailProfile, checkFiledExist, updateUser } from "services/user";
+import { checkFiledExist, updateUser } from "services/user";
 import { statusResponse } from "util/common";
-import Success from "components/success";
 import ChangeProfile from "components/changeProfile";
 
 const ProfileSetting = () => {
@@ -49,22 +48,23 @@ const ProfileSetting = () => {
             throw new Error('Field exist')
           }
           break;
-          case 'password':
-            data = {
-              fieldName: currentInfo,
-              fieldData: {
-                old_password: newText,
-                new_password: newPassword
-              }
+        case 'password':
+          data = {
+            fieldName: currentInfo,
+            fieldData: {
+              old_password: newText,
+              new_password: newPassword
             }
-            break;
+          }
+          break;
 
         default:
           break;
       }
       await updateUser(data)
-      dispatch(changeUserInfo({[currentInfo]: newText}))
+      dispatch(changeUserInfo({ [currentInfo]: newText }))
       dispatch(changeLoading(false))
+      setShowModal(false)
       setShowSuccess(true)
     } catch (error) {
       setErrorInput(true)
@@ -73,12 +73,35 @@ const ProfileSetting = () => {
   }
 
   const renderTitleModal = () => {
-    const title = currentInfo === 'email' ? 'p.profile.setting.modal.email' :
-      currentInfo === 'user_name' ? 'p.profile.setting.modal.username' :
-        currentInfo === 'password' ? 'p.profile.setting.modal.password' :
-          currentInfo === 'phone_number' ? 'p.profile.setting.modal.phone_number' :
-            'p.profile.setting.modal.address'
-    return title
+    let titleInfo = {}
+    switch (currentInfo) {
+      case 'email':
+        titleInfo.title = 'p.profile.setting.modal.email'
+        titleInfo.titleSuccess = 'p.profile.setting.modal.email.success'
+        break;
+      case 'user_name':
+        titleInfo.title = 'p.profile.setting.modal.username'
+        titleInfo.titleSuccess = 'p.profile.setting.modal.username.success'
+        break;
+      case 'phone_number':
+        titleInfo.title = 'p.profile.setting.modal.phone_number'
+        titleInfo.titleSuccess = 'p.profile.setting.modal.phone_number.success'
+        break;
+      case 'address':
+        titleInfo.title = 'p.profile.setting.modal.address'
+        titleInfo.titleSuccess = 'p.profile.setting.modal.address.success'
+        break;
+      case 'password':
+        titleInfo.title = 'p.profile.setting.modal.password'
+        titleInfo.titleSuccess = 'p.profile.setting.modal.password.success'
+        break;
+
+      default:
+        titleInfo.title = 'p.profile.setting.modal.username'
+        titleInfo.titleSuccess = 'p.profile.setting.modal.username.success'
+        break;
+    }
+    return titleInfo
   }
 
   const handleChangeInput = (e, mode) => {
@@ -119,8 +142,8 @@ const ProfileSetting = () => {
       {
         showModal && (
           <Modal
-            onCancel={() => {setShowModal(false); setErrorInput(false)}}
-            title={t(renderTitleModal())}
+            onCancel={() => { setShowModal(false); setErrorInput(false) }}
+            title={t(renderTitleModal().title)}
             onConfirm={handleConfirm}
           >
             {
@@ -218,9 +241,21 @@ const ProfileSetting = () => {
       }
       {
         showSuccess && (
-          <Success>
-            <div>{t('p.profile.setting.modal.email.success')}</div>
-          </Success>
+          <Modal
+            title={t(renderTitleModal().title)}
+            onCancel={() => { setShowSuccess(false) }}
+            isShowConfirm={false}
+          >
+            <div className="p-profile-setting-success">
+                <div className="c-success-img">
+                  <img src="/images/icon_circle.svg" className="c-success-img-circle" alt="logo-circle"></img>
+                  <img src="/images/icon_success.svg" className="c-success-img-success" alt="logo-success"></img>
+                </div>
+              <div>
+                {t(renderTitleModal().titleSuccess)}
+              </div>
+            </div>
+          </Modal>
         )
       }
     </div>

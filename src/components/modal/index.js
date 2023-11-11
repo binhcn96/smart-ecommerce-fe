@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-const Modal = ({ className, disabled, title, onCancel, onConfirm, children }) => {
+const Modal = ({ className, disabled, title, onCancel, onConfirm, children, isShowConfirm = true }) => {
   const { t } = useTranslation()
   return (
     <div className="c-modal">
@@ -15,7 +15,7 @@ const Modal = ({ className, disabled, title, onCancel, onConfirm, children }) =>
         <div className={`c-modal-body ${className}`}>{children}</div>
         <div className="c-modal-footer">
           <button onClick={onCancel}>{t('c.modal.cancel')}</button>
-          <button onClick={onConfirm} disabled={disabled}>{t('c.modal.confirm')}</button>
+          {isShowConfirm && <button onClick={onConfirm} disabled={disabled}>{t('c.modal.confirm')}</button>}
         </div>
       </div>
     </div>
